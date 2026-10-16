@@ -261,6 +261,21 @@ export default function App() {
   }
 
   const primarySubmit = settings.primary === 'send'
+
+  const demoRef = useRef({ addMark, setMarks, setSelected, setMessage, deliver, setActive })
+  demoRef.current = { addMark, setMarks, setSelected, setMessage, deliver, setActive }
+  useEffect(() => {
+    if ('__TAURI_INTERNALS__' in window) return
+    const w = window as unknown as { aisightDemo?: unknown }
+    w.aisightDemo = {
+      mark: (x: number, y: number, ww: number, hh: number) => demoRef.current.addMark({ x, y, w: ww, h: hh }),
+      note: (n: number, text: string) => demoRef.current.setMarks((cur) => cur.map((m) => (m.n === n ? { ...m, note: text } : m))),
+      select: (ids: string[]) => demoRef.current.setSelected(ids),
+      message: (text: string) => demoRef.current.setMessage(text),
+      pick: (i: number) => demoRef.current.setActive(i),
+      attach: () => demoRef.current.deliver(false),
+    }
+  }, [])
   const onSubmitKey = (alt: boolean) => deliver(alt ? !primarySubmit : primarySubmit)
 
   useEffect(() => {

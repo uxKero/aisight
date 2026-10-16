@@ -152,6 +152,7 @@ function mockBackend(): Backend {
     { id: 'd2', host: 'orca', agent: 'codex', title: 'Fix flaky auth tests', detail: 'api · fix/auth-timeouts', delivery: 'orca', handle: 'd2', lastActiveAt: now - 4 * 60_000 },
     { id: 'd3', host: 'orca', agent: 'claude', title: 'Landing hero animation', detail: 'marketing-site', delivery: 'orca', handle: 'd3', lastActiveAt: now - 50 * 60_000 },
     { id: 'd4', host: 'orca', agent: 'codex', title: 'Migrate to Postgres 17', detail: 'infra · chore/pg17', delivery: 'orca', handle: 'd4', lastActiveAt: now - 3 * 3_600_000 },
+    { id: 'd13', host: 'terminal', agent: 'claude', title: 'claude · northwind', detail: 'Terminal', delivery: 'paste-path', handle: 'd13' },
     { id: 'd5', host: 'antigravity', title: 'Antigravity', detail: 'storefront', delivery: 'paste-image', handle: 'd5' },
     { id: 'd6', host: 'cursor', title: 'Cursor', detail: 'desktop', delivery: 'paste-image', handle: 'd6' },
     { id: 'd7', host: 'grok', title: 'Grok Bot', detail: 'desktop', delivery: 'paste-image', handle: 'd7' },

@@ -32,13 +32,17 @@ Showing an agent what you see takes too many steps. Take the screenshot, find th
 
 `Alt + Shift + S` freezes the screen. Drag an area, press `W` to pick a window, or `Enter` for the full screen. In window mode every open window shows up with a preview, the minimized ones too, and the one you pick is captured whole even if something covers it.
 
-<img src="assets/capture.png" alt="The capture layer over a desktop: the browser window highlighted, and the list of open windows with their previews on the right" width="100%">
-
 ## Settings
 
 Language, theme, the capture shortcut and folder, what Enter does, which details go with each capture and your message templates.
 
 <img src="assets/settings.png" alt="The settings window: language, theme, capture tool, shortcut, captures folder, main action and message templates" width="100%">
+
+## Send to
+
+Pick one agent or several. Orca sessions show their project and branch, and the agent running in them.
+
+<img src="assets/send-to.png" alt="AISight in dark mode with a marked chart and four destinations selected: an Orca session, a terminal running Claude Code, Cursor and WhatsApp" width="100%">
 
 ## How it reaches each agent
 
