@@ -1,0 +1,220 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/geist';
+@import '@fontsource-variable/geist-mono';
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme {
+  --font-sans: 'Geist Variable', system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, monospace;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-chrome: var(--chrome);
+  --color-sunken: var(--sunken);
+  --color-well: var(--well);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-hover: var(--hover);
+  --color-selected: var(--selected);
+  --color-primary: var(--primary);
+  --color-primary-ink: var(--primary-ink);
+  --color-ok: var(--ok);
+  --color-bad: var(--bad);
+
+  --radius-xs: 4px;
+  --radius-sm: 5px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+:root,
+[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f6f5f2;
+  --surface: #ffffff;
+  --chrome: #ffffff;
+  --sunken: #f6f5f2;
+  --well: #ebe9e4;
+  --ink: #18171a;
+  --ink-2: #55524e;
+  --ink-3: #8a867f;
+  --line: rgb(24 23 26 / 0.08);
+  --line-strong: rgb(24 23 26 / 0.14);
+  --hover: rgb(24 23 26 / 0.04);
+  --selected: rgb(24 23 26 / 0.065);
+  --primary: #18171a;
+  --primary-ink: #ffffff;
+  --ok: #0f9d58;
+  --bad: #d93025;
+  --dot: rgb(24 23 26 / 0.09);
+  --float-shadow: 0 1px 2px rgb(24 23 26 / 0.06), 0 6px 20px rgb(24 23 26 / 0.08);
+  --image-shadow: 0 0 0 1px rgb(24 23 26 / 0.08), 0 2px 4px rgb(24 23 26 / 0.05), 0 16px 40px rgb(24 23 26 / 0.12);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #000000;
+  --surface: #0a0a0a;
+  --chrome: #000000;
+  --sunken: #000000;
+  --well: #050505;
+  --ink: #ededed;
+  --ink-2: #a1a1a1;
+  --ink-3: #707070;
+  --line: rgb(255 255 255 / 0.09);
+  --line-strong: rgb(255 255 255 / 0.15);
+  --hover: rgb(255 255 255 / 0.05);
+  --selected: rgb(255 255 255 / 0.08);
+  --primary: #ededed;
+  --primary-ink: #0a0a0a;
+  --ok: #3ecf8e;
+  --bad: #ff4d4f;
+  --dot: rgb(255 255 255 / 0.07);
+  --float-shadow: 0 0 0 1px rgb(255 255 255 / 0.06), 0 8px 30px rgb(0 0 0 / 0.7);
+  --image-shadow: 0 0 0 1px rgb(255 255 255 / 0.1), 0 16px 48px rgb(0 0 0 / 0.8);
+}
+
+[data-glass='true'][data-theme='light'] {
+  --bg: transparent;
+  --chrome: rgb(255 255 255 / 0.62);
+  --well: rgb(236 234 229 / 0.55);
+}
+
+[data-glass='true'][data-theme='dark'] {
+  --bg: transparent;
+  --chrome: rgb(0 0 0 / 0.78);
+  --well: rgb(0 0 0 / 0.86);
+}
+
+:root {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'ss01', 'cv11';
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+@layer base {
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgb(47 107 255 / 0.25);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(button, [role='button'], a, [role='option']):focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--ink) 45%, transparent);
+  outline-offset: 2px;
+}
+
+:where(input, textarea) {
+  font: inherit;
+  color: inherit;
+  outline: none;
+  border: 0;
+  background: none;
+}
+}
+
+@layer components {
+.press {
+  transition:
+    transform 140ms var(--ease-out),
+    background-color 150ms ease,
+    color 150ms ease,
+    opacity 150ms ease,
+    box-shadow 150ms ease;
+}
+.press:active:not(:disabled) {
+  transform: scale(0.97);
+}
+
+.floating {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--float-shadow);
+}
+
+.stage {
+  background-color: var(--well);
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+.image-frame {
+  box-shadow: var(--image-shadow);
+}
+
+.brand-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  box-shadow:
+    0 0 0 1px rgb(0 0 0 / 0.06) inset,
+    0 1px 1.5px rgb(0 0 0 / 0.12);
+}
+
+.target-badge {
+  position: absolute;
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 1.5px;
+  background: var(--surface);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.scroll-quiet {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+.kbd {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--selected);
+  color: var(--ink-2);
+}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-property: opacity, background-color, color !important;
+    animation: none !important;
+  }
+}
